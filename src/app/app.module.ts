@@ -4,10 +4,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
+import { ButtonModule } from 'primeng/button';
+import { InputMaskModule } from 'primeng/inputmask';
+
+import { FormsModule } from '@angular/forms';
+
+import { FormSearchComponent } from './components/form-search/form-search.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [AppComponent, MainComponent, FormSearchComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ButtonModule,
+    FormsModule,
+    InputMaskModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,26 @@
+<div class="flex flex-column">
+  <img src="/assets/undraw.svg" alt="" height="250px" />
+
+  <form class="mt-4" #form="ngForm" (ngSubmit)="handleSubmit(form)">
+    <div class="flex flex-column">
+      <span class="p-float-label">
+        <p-inputMask
+          styleClass="w-12"
+          mask="99999-999"
+          [(ngModel)]="inputCep"
+          name="cep_input"
+          id="cep_input"
+          [required]="true"
+        ></p-inputMask>
+        <label htmlFor="cep_input">Busque pelo CEP</label>
+      </span>
+      <button
+        class="p-button-success mt-2"
+        type="submit"
+        pButton
+        label="Buscar"
+        [disabled]="!form.valid"
+      ></button>
+    </div>
+  </form>
+</div>
