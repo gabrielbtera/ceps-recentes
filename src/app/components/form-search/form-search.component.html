@@ -18,7 +18,9 @@
         class="p-button-success mt-2"
         type="submit"
         pButton
-        label="Buscar"
+        label="Buscar CEP"
+        [loading]="loading"
+        icon="pi pi-search"
         [disabled]="!form.valid"
       ></button>
     </div>

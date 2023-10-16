@@ -10,6 +10,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { FormsModule } from '@angular/forms';
 
 import { FormSearchComponent } from './components/form-search/form-search.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, MainComponent, FormSearchComponent],
@@ -19,6 +20,7 @@ import { FormSearchComponent } from './components/form-search/form-search.compon
     ButtonModule,
     FormsModule,
     InputMaskModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

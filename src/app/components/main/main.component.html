@@ -1,2 +1,5 @@
 <p>main works!</p>
-<app-form-search></app-form-search>
+<app-form-search
+  [loading]="loading"
+  (eventSeachCep)="getCep($event)"
+></app-form-search>

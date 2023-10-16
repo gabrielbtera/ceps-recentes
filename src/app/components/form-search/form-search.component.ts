@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
+import { DataCep } from 'src/app/model/data-cep';
 
 @Component({
   selector: 'app-form-search',
@@ -7,9 +8,16 @@ import { FormGroup, NgForm } from '@angular/forms';
   styleUrls: ['./form-search.component.css'],
 })
 export class FormSearchComponent {
-  inputCep: string = '';
+  @Input() loading!: boolean;
+
+  inputCep!: string;
+
+  @Output() eventSeachCep = new EventEmitter<string>();
 
   handleSubmit(form: NgForm) {
-    console.log(this.inputCep.replace(/-/g, ''));
+    if (form.valid) {
+      this.inputCep = this.inputCep.replace(/-/g, '');
+      this.eventSeachCep.emit(this.inputCep);
+    }
   }
 }
