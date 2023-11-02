@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
+  // { path: '', redirectTo: '/ceps-recentes', pathMatch: 'full' },
   {
     path: 'ceps-recentes',
     component: MainComponent,

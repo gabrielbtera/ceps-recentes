@@ -8,19 +8,29 @@ import { ButtonModule } from 'primeng/button';
 import { InputMaskModule } from 'primeng/inputmask';
 
 import { FormsModule } from '@angular/forms';
+import { FieldsetModule } from 'primeng/fieldset';
 
 import { FormSearchComponent } from './components/form-search/form-search.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CepComponent } from './components/cep/cep.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, FormSearchComponent],
+  declarations: [
+    AppComponent,
+    MainComponent,
+    FormSearchComponent,
+    CepComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
     FormsModule,
+    BrowserAnimationsModule,
     InputMaskModule,
     HttpClientModule,
+    FieldsetModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
