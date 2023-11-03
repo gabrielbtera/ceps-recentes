@@ -11,6 +11,8 @@ export class MainComponent {
   cep: string = '';
   infoCep!: DataCep;
 
+  infosCeps: DataCep[] = [];
+
   loading = false;
 
   constructor(private cepService: CepService) {}
@@ -19,6 +21,7 @@ export class MainComponent {
     this.loading = true;
     this.cepService.getCep(cep).subscribe((infos) => {
       this.infoCep = infos;
+      this.infosCeps.unshift(infos);
       this.loading = false;
     });
   }
