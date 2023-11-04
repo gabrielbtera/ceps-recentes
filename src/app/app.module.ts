@@ -14,7 +14,7 @@ import { FormSearchComponent } from './components/form-search/form-search.compon
 import { HttpClientModule } from '@angular/common/http';
 import { CepComponent } from './components/cep/cep.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { OrderListModule } from 'primeng/orderlist';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ButtonModule,
     FormsModule,
     BrowserAnimationsModule,
+    OrderListModule,
     InputMaskModule,
     HttpClientModule,
     FieldsetModule,

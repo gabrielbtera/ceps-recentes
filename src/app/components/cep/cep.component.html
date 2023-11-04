@@ -1,4 +1,4 @@
-<div *ngFor="let cep of dataCeps">
+<!-- <div *ngFor="let cep of dataCeps">
   <p-fieldset [legend]="cep.cep">
     <div>
       <p>
@@ -20,4 +20,26 @@
       <button pButton label="detalhes"></button>
     </div>
   </p-fieldset>
-</div>
+</div> -->
+
+<ng-container *ngIf="datasCeps$ | async as data">
+  <p-orderList
+    #order
+    [value]="data"
+    [listStyle]="{ 'max-height': '30rem' }"
+    *ngIf="data.length"
+  >
+    <ng-template let-cep pTemplate="cep">
+      <div class="flex flex-wrap p-2 align-items-center gap-3">
+        <div class="flex-1 flex flex-column gap-2">
+          <span class="font-bold">{{ cep.cep }}</span>
+          <div class="flex align-items-center gap-2">
+            <i class="pi pi-tag text-sm"></i>
+            <span>{{ cep.uf }}</span>
+          </div>
+        </div>
+        <span class="font-bold text-900">{{ "$" + cep.ddd }}</span>
+      </div>
+    </ng-template>
+  </p-orderList>
+</ng-container>

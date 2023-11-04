@@ -1,6 +1,15 @@
 import { Observable } from 'rxjs';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { DataCep } from 'src/app/model/data-cep';
+import { OrderList } from 'primeng/orderlist';
 
 @Component({
   selector: 'app-cep',
@@ -10,13 +19,15 @@ import { DataCep } from 'src/app/model/data-cep';
 export class CepComponent {
   @Input() dataCeps: DataCep[] = [];
 
-  @Output() selection = new EventEmitter<DataCep[]>();
+  @ViewChild(OrderList) orderList!: OrderList;
+
+  @Input() datasCeps$: Observable<DataCep[]> = new Observable<DataCep[]>();
 
   getValue(data: string) {
     return data ? data : 'Não encontrado';
   }
 
-  notificarSelecao(dados: DataCep[]) {
-    this.selection.emit(dados);
+  setCd() {
+    this.orderList?.cd.detectChanges();
   }
 }

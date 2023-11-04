@@ -1,6 +1,15 @@
-import { Component } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  ViewChild,
+} from '@angular/core';
+import { OrderList } from 'primeng/orderlist';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { DataCep } from 'src/app/model/data-cep';
 import { CepService } from 'src/app/services/cep.service';
+import { CepComponent } from '../cep/cep.component';
 
 @Component({
   selector: 'app-main',
@@ -13,15 +22,26 @@ export class MainComponent {
 
   infosCeps: DataCep[] = [];
 
+  @ViewChild(CepComponent) childComponent!: CepComponent;
+
+  private datasCeps = new BehaviorSubject<DataCep[]>([]);
+  datasCeps$: Observable<DataCep[]> = new Observable<DataCep[]>();
+
   loading = false;
 
-  constructor(private cepService: CepService) {}
+  constructor(private cepService: CepService) {
+    this.datasCeps$ = this.datasCeps.asObservable();
+  }
 
   getCep(cep: string) {
     this.loading = true;
     this.cepService.getCep(cep).subscribe((infos) => {
       this.infoCep = infos;
       this.infosCeps.unshift(infos);
+      this.datasCeps.next(this.infosCeps);
+
+      this.childComponent.setCd();
+
       this.loading = false;
     });
   }
