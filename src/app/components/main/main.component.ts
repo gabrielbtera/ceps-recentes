@@ -17,9 +17,6 @@ import { CepComponent } from '../cep/cep.component';
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent {
-  cep: string = '';
-  infoCep!: DataCep;
-
   infosCeps: DataCep[] = [];
 
   @ViewChild(CepComponent) childComponent!: CepComponent;
@@ -36,11 +33,10 @@ export class MainComponent {
   getCep(cep: string) {
     this.loading = true;
     this.cepService.getCep(cep).subscribe((infos) => {
-      this.infoCep = infos;
       this.infosCeps.unshift(infos);
       this.datasCeps.next(this.infosCeps);
 
-      this.childComponent.setCd();
+      this.childComponent.setCd(); // este cd foi necessário pois o order list não está reativo
 
       this.loading = false;
     });
